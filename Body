@@ -1,0 +1,195 @@
+<submission>
+  <documents>
+    <document>
+      <issuer>
+        <type>B</type>
+        <id>643520422</id>
+        <name>Agility Infrastructure</name>
+        <address>
+          <buildingNumber>Economic Zone, ATAKA</buildingNumber>
+          <room>123</room>
+          <floor>16</floor>
+          <street>Economic Zone, ATAKA</street>
+          <landmark />
+          <additionalInformation />
+          <governate>Cairo</governate>
+          <regionCity>Economic Zone, ATAKA</regionCity>
+          <postalCode>98607</postalCode>
+          <country>EG</country>
+          <branchID>0</branchID>
+        </address>
+      </issuer>
+      <receiver>
+        <type>B</type>
+        <id>232123</id>
+        <name>Jatt Industries</name>
+        <address>
+          <buildingNumber>Cairo</buildingNumber>
+          <room />
+          <floor />
+          <street>16 Housh Issa</street>
+          <landmark />
+          <additionalInformation />
+          <governate>Cairo</governate>
+          <regionCity>Damanhur</regionCity>
+          <postalCode>98607</postalCode>
+          <country>EG</country>
+        </address>
+      </receiver>
+      <invoiceLines>
+        <invoiceLine>
+          <description>Issuance and forms of approvals for import, export, storage, service, circulation, transfer of goods, withdrawal, retention, display, samples, or other types of all kinds.</description>
+          <itemType>GS1</itemType>
+          <itemCode>10002103</itemCode>
+          <unitType>EA</unitType>
+          <quantity>1</quantity>
+          <unitValue>
+            <currencySold>EGP</currencySold>
+            <amountEGP>1145.47</amountEGP>
+          </unitValue>
+          <salesTotal>1145.47</salesTotal>
+          <discount>
+            <rate>0</rate>
+            <amount>0</amount>
+          </discount>
+          <taxableItems>
+            <taxableItem>
+              <taxType>T1</taxType>
+              <amount>0.00</amount>
+              <subType>V001</subType>
+              <rate>0.00</rate>
+            </taxableItem>
+          </taxableItems>
+          <internalCode>IC0</internalCode>
+          <itemsDiscount>0.00</itemsDiscount>
+          <netTotal>1145.47</netTotal>
+          <totalTaxableFees>0.00</totalTaxableFees>
+          <valueDifference>0.00</valueDifference>
+          <total>1145.47</total>
+        </invoiceLine>
+        <invoiceLine>
+          <description>Store, manage and track electronic documents</description>
+          <itemType>GS1</itemType>
+          <itemCode>10007582</itemCode>
+          <unitType>EA</unitType>
+          <quantity>1</quantity>
+          <unitValue>
+            <currencySold>EGP</currencySold>
+            <amountEGP>49.53</amountEGP>
+          </unitValue>
+          <salesTotal>49.53</salesTotal>
+          <discount>
+            <rate>0</rate>
+            <amount>0</amount>
+          </discount>
+          <taxableItems>
+            <taxableItem>
+              <taxType>T1</taxType>
+              <amount>0.00</amount>
+              <subType>V001</subType>
+              <rate>0.00</rate>
+            </taxableItem>
+          </taxableItems>
+          <internalCode>IC0</internalCode>
+          <itemsDiscount>0.00</itemsDiscount>
+          <netTotal>49.53</netTotal>
+          <totalTaxableFees>0.00</totalTaxableFees>
+          <valueDifference>0.00</valueDifference>
+          <total>49.53</total>
+        </invoiceLine>
+        <invoiceLine>
+          <description>Linking services for financial movements or electronic wallets for financial guarantees or pledges</description>
+          <itemType>GS1</itemType>
+          <itemCode>10007582</itemCode>
+          <unitType>EA</unitType>
+          <quantity>1</quantity>
+          <unitValue>
+            <currencySold>EGP</currencySold>
+            <amountEGP>100.62</amountEGP>
+          </unitValue>
+          <salesTotal>100.62</salesTotal>
+          <discount>
+            <rate>0</rate>
+            <amount>0</amount>
+          </discount>
+          <taxableItems>
+            <taxableItem>
+              <taxType>T1</taxType>
+              <amount>0.00</amount>
+              <subType>V001</subType>
+              <rate>0.00</rate>
+            </taxableItem>
+          </taxableItems>
+          <internalCode>IC0</internalCode>
+          <itemsDiscount>0.00</itemsDiscount>
+          <netTotal>100.62</netTotal>
+          <totalTaxableFees>0.00</totalTaxableFees>
+          <valueDifference>0.00</valueDifference>
+          <total>100.62</total>
+        </invoiceLine>
+        <invoiceLine>
+          <description>Electronic linking services for listing transactions</description>
+          <itemType>GS1</itemType>
+          <itemCode>10007582</itemCode>
+          <unitType>EA</unitType>
+          <quantity>1</quantity>
+          <unitValue>
+            <currencySold>EGP</currencySold>
+            <amountEGP>100.62</amountEGP>
+          </unitValue>
+          <salesTotal>100.62</salesTotal>
+          <discount>
+            <rate>0</rate>
+            <amount>0</amount>
+          </discount>
+          <taxableItems>
+            <taxableItem>
+              <taxType>T1</taxType>
+              <amount>0.00</amount>
+              <subType>V001</subType>
+              <rate>0.00</rate>
+            </taxableItem>
+          </taxableItems>
+          <internalCode>IC0</internalCode>
+          <itemsDiscount>0.00</itemsDiscount>
+          <netTotal>100.62</netTotal>
+          <totalTaxableFees>0.00</totalTaxableFees>
+          <valueDifference>0.00</valueDifference>
+          <total>100.62</total>
+        </invoiceLine>
+      </invoiceLines>
+      <totalSalesAmount>1396.24</totalSalesAmount>
+      <totalDiscountAmount>0.00</totalDiscountAmount>
+      <netAmount>1396.24</netAmount>
+      <taxTotals>
+        <taxTotal>
+          <taxType>T1</taxType>
+          <amount>0.00</amount>
+        </taxTotal>
+        <taxTotal>
+          <taxType>T4</taxType>
+          <amount>0.00</amount>
+        </taxTotal>
+      </taxTotals>
+      <totalAmount>1396.24</totalAmount>
+      <totalItemsDiscountAmount>0.00</totalItemsDiscountAmount>
+      <extraDiscountAmount>0.00</extraDiscountAmount>
+      <documentType>I</documentType>
+      <documentTypeVersion>1.0</documentTypeVersion>
+      <dateTimeIssued>2023-09-16T00:30:22</dateTimeIssued>
+      <taxpayerActivityCode>4390</taxpayerActivityCode>
+      <internalID>IRV/92/PORS2023</internalID>
+      <purchaseOrderReference>1230</purchaseOrderReference>
+      <purchaseOrderDescription />
+      <salesOrderReference />
+      <salesOrderDescription />
+      <proformaInvoiceNumber />
+      <signatures>
+        <signature>
+          <signatureType>I</signatureType>
+          <value>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</value>
+        </signature>
+      </signatures>
+    </document>
+  </documents>
+</submission>
