@@ -180,8 +180,7 @@
       <taxpayerActivityCode>4390</taxpayerActivityCode>
       <internalID>IRV/92/PORS2023</internalID>
       <purchaseOrderReference>1230</purchaseOrderReference>
-      <purchaseOrderDescription />
-      <salesOrderReference />
+      <salesOrderReference>1452</salesOrderReference>
       <salesOrderDescription />
       <proformaInvoiceNumber />
       <signatures>
