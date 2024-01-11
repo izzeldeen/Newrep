@@ -1,16 +1,12 @@
-Product SeName
-commercial-office-space-rental
-personal-budgeting-app
-property-management-software
-real-estate-investment-fund
-
-Vendor SeName 
-agility-logistics
-vendor-company
-
-Product ID
-654a1f4dad7dfa6591171438
-654a1f55ad7dfa6591171544
-655c7733f356c94249e3fd8c
-655c7f28f356c94249e489c9
-
+ <validation-provider tag="div" rules="required" name="TaxId" v-slot="{ errors, classes }">
+                                                <label asp-for="TaxId" class="col-form-label">@Loc["Account.Fields.TaxId"]:</label>
+                                                <span class="required">*</span>
+                                                <input asp-for="TaxId" v-model="customer.TaxId" v-bind:class="[classes , 'form-control']" autofocus="autofocus" 
+                                                data-val-required=@Loc["Account.Fields.TaxId.Required"] />
+                                                <span class="field-validation-error">{{ errors[0] }}</span>
+                                                <span v-if="!customer.validateTaxId(errors)"></span>
+                                                <span asp-validation-for="TaxId"></span>
+                                              @*  <div v-if="!customer?.validateTaxId()">
+   <p style="color: red;">Please enter a valid Tax ID format (e.g., 123-456-789).</p>
+</div>*@
+                             </validation-provider>
