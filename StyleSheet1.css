@@ -1,3 +1,3 @@
-db.Customer.updateMany({ },
-   { $set: { "Password": "11107B88B6CB2DF3B054B5173702598C4E38A5CD"  , "PasswordSalt": "XB+IvwY="} }
+db.Product.updateMany({ },
+   { $set: { "Approved": true} }
    )
