@@ -1,1 +1,45 @@
-2023-11-07T11:46:04.595+00:00
+// Define a function to update the registrationNumber for all documents in the vendor collection
+function updateRegistrationNumbers() {
+    // Get the total count of documents in the collection
+    var count = db.Vendor.count();
+
+    // Start the bulk write operation
+    var bulkOps = [];
+
+    // Check if there are documents in the collection
+    if (count > 0) {
+        // Iterate over all documents in the collection
+       var index = 0;
+        db.Vendor.find().forEach(function(doc) {
+            // Ensure the document has an _id field
+            if (doc._id) {
+                // Generate the registrationNumber with leading zeros
+                var registrationNumber = (index + 1).toString().padStart(8, '0');
+
+                // Update the registrationNumber field of the current document
+                bulkOps.push({
+                    updateOne: {
+                        filter: { _id: doc._id },
+                        update: { $set: { RegistrationNumber: registrationNumber } }
+                    }
+                });
+            } else {
+                print("Document without _id found. Skipping.");
+            }
+index = index + 1;
+        });
+
+        // Execute the bulk write operation if bulkOps array is not empty
+        if (bulkOps.length > 0) {
+            db.Vendor.bulkWrite(bulkOps);
+            print("Registration numbers updated successfully.");
+        } else {
+            print("No documents updated in the collection.");
+        }
+    } else {
+        print("No documents found in the collection.");
+    }
+}
+
+// Call the function to update registration numbers
+updateRegistrationNumbers();
