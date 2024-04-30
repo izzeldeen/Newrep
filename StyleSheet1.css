@@ -1,1 +1,9 @@
-registration.uploadattachment
+ var countryId = !string.IsNullOrEmpty(x.CountryId) ? x.CountryId : "";
+                    var country = await countryService.GetCountryById(countryId);
+                    var util = PhoneNumberUtil.GetInstance();
+                    var number = util.Parse(x.Phone, country.TwoLetterIsoCode);
+                    var validateNumber = util.IsValidNumber(number);
+                    if (!validateNumber)
+                    {
+                        context.AddFailure(nameof(RegisterModel.Phone), translationService.GetResource("Account.Fields.Phone.FormatInvalid"));
+                    }
