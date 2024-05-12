@@ -1,9 +1,14 @@
- var countryId = !string.IsNullOrEmpty(x.CountryId) ? x.CountryId : "";
-                    var country = await countryService.GetCountryById(countryId);
-                    var util = PhoneNumberUtil.GetInstance();
-                    var number = util.Parse(x.Phone, country.TwoLetterIsoCode);
-                    var validateNumber = util.IsValidNumber(number);
-                    if (!validateNumber)
-                    {
-                        context.AddFailure(nameof(RegisterModel.Phone), translationService.GetResource("Account.Fields.Phone.FormatInvalid"));
-                    }
+Standard Product name is required. 	الاسم القياسي مطلوب
+HS Code is required	مطلوب بند التعريفة الجمركية
+HS Code exceeded 10 digits.	تجاوز بند التعريفة الجمركية 10 أرقام
+HS Code should be 10 digits.	يجب أن يتكون بند التعريفة الجمركية من 10 أرقام
+Serial Number already exists	الرقم التسلسلي  موجود
+Product type invalid value	قيمة نوع المنتج غير صحيحة
+Product classification is required	مطلوب إدخال تصنيف المنتج
+Product classification value invalid	قيمة تصنيف قيمة تصنيف المنتج غير صحيحة  غير صحيحة
+Is Export value invalid	قيمة التصدير غير صحيحة
+Has Certificate value invalid	قيمة هل المنتج حاصل على شهادة مطابقة غير صحيحة
+Is Certificate Conformity invalid	قيمة هل المنتج حاصل على شهادة مطابقة غير صحيحة
+Active value invalid	
+Power Duration value invalid (Daily , Weekly , Monthly )	
+Min order quantity must be numbers	
