@@ -1,4 +1,1 @@
- var html = await _viewRenderService.RenderToStringAsync<CompaniesProductStatisticalModel>(ProductCompaniesReport, model);
-            TextReader sr = new StringReader(html);
-            using var doc = Scryber.Components.Document.ParseDocument(sr, Scryber.ParseSourceType.DynamicContent);
-            doc.SaveAsPDF(stream);
+await using var fileStream = new FileStream(filePath, FileMode.Create, Encoding.UTF8);
