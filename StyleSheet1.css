@@ -1,1 +1,115 @@
-mohamed.labib@uni-grp.com
+  <div id="container" style="
+    padding: 50x;
+    border: 1px solid;
+    margin: 50px;
+">
+
+            <h3 style="
+    text-align: center;
+    padding-top: 25px;
+font-size:15px;
+">
+                e-Tabadul's active companies products report
+            </h3>
+            <div class="certainTimeFrame" style="
+    text-align: center;
+">
+                <label> @Model?.dateRange?.StartDate  To </label>
+                <label> @Model?.dateRange?.EndDate </label>
+            </div>
+
+            <table>
+                <tbody>
+                    <tr>
+                        <th>
+                            <span>@Model?.ProductActiveCount</span>
+                            <span>Total Numbers of active Products</span>
+                        </th>
+                        <th>
+                            <span>@Model?.VendorActiveCount</span>
+                            <span>Total Numbers of active Companies</span>
+
+                        </th>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            Total number of active companies that added products to the system with their corresponding investor type
+                        </td>
+
+                        <td>
+                            Total Numbers of active companies with their corresponding investor type
+                        </td>
+                    </tr>
+
+                    <tr>
+
+                        <td>
+                            <div class="col-print-6">
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <th>Companies Count</th>
+                                            <th>Investor Type</th>
+                                        </tr>
+                                        <tr>
+                                            <td>@Model?.ActiveVendorProducts?.SCZCompaniesCount</td>
+                                            <td>Investor in the Suez Canal Economic Zone</td>
+                                        </tr>
+                                        <tr>
+                                            <td>@Model?.ActiveVendorProducts?.FreeZoneCompaniesCount</td>
+                                            <td>Free zone company</td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>@Model?.ActiveVendorProducts?.InLandInvestmentCompaniesCount</td>
+                                            <td>In-Land Investment company</td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>@Model?.ActiveVendorProducts?.OtherCompaniesCount</td>
+                                            <td>Other</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+
+                        </td>
+
+                        <td>
+                            <div class="col-print-6">
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <th>Companies Count</th>
+                                            <th>Investor Type</th>
+                                        </tr>
+                                        <tr>
+                                            <td>@Model?.ActiveVendor?.SCZCompaniesCount</td>
+                                            <td>Investor in the Suez Canal Economic Zone</td>
+                                        </tr>
+                                        <tr>
+                                            <td>@Model?.ActiveVendor?.FreeZoneCompaniesCount</td>
+                                            <td>Free zone company</td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>@Model?.ActiveVendor?.InLandInvestmentCompaniesCount</td>
+                                            <td>In-Land Investment company</td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>@Model?.ActiveVendor?.OtherCompaniesCount</td>
+                                            <td>Other</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
