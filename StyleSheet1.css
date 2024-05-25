@@ -1,115 +1,316 @@
-  <div id="container" style="
-    padding: 50x;
-    border: 1px solid;
-    margin: 50px;
-">
+@using MC.MarketPlace.Business.Common.ReportsModels;
+@model CompaniesProductStatisticalModel
 
-            <h3 style="
-    text-align: center;
-    padding-top: 25px;
-font-size:15px;
-">
-                e-Tabadul's active companies products report
-            </h3>
-            <div class="certainTimeFrame" style="
-    text-align: center;
-">
-                <label> @Model?.dateRange?.StartDate  To </label>
-                <label> @Model?.dateRange?.EndDate </label>
+@{
+    //page title
+    ViewBag.Title = Loc["Admin.Reports.CompaniesProductStatisticalModel"];
+}
+
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="x_panel light form-fit">
+            <div>
+                <div class="caption level-caption">
+                    <i class="fa fa-bar-chart-o"></i>
+                    @Loc["Admin.Reports.CompaniesProductStatisticalModel"]
+                </div>
             </div>
 
-            <table>
-                <tbody>
-                    <tr>
-                        <th>
-                            <span>@Model?.ProductActiveCount</span>
-                            <span>Total Numbers of active Products</span>
-                        </th>
-                        <th>
-                            <span>@Model?.VendorActiveCount</span>
-                            <span>Total Numbers of active Companies</span>
 
-                        </th>
-                    </tr>
-
-                    <tr>
-                        <td>
-                            Total number of active companies that added products to the system with their corresponding investor type
-                        </td>
-
-                        <td>
-                            Total Numbers of active companies with their corresponding investor type
-                        </td>
-                    </tr>
-
-                    <tr>
-
-                        <td>
-                            <div class="col-print-6">
-                                <table>
-                                    <tbody>
-                                        <tr>
-                                            <th>Companies Count</th>
-                                            <th>Investor Type</th>
-                                        </tr>
-                                        <tr>
-                                            <td>@Model?.ActiveVendorProducts?.SCZCompaniesCount</td>
-                                            <td>Investor in the Suez Canal Economic Zone</td>
-                                        </tr>
-                                        <tr>
-                                            <td>@Model?.ActiveVendorProducts?.FreeZoneCompaniesCount</td>
-                                            <td>Free zone company</td>
-
-                                        </tr>
-                                        <tr>
-                                            <td>@Model?.ActiveVendorProducts?.InLandInvestmentCompaniesCount</td>
-                                            <td>In-Land Investment company</td>
-
-                                        </tr>
-                                        <tr>
-                                            <td>@Model?.ActiveVendorProducts?.OtherCompaniesCount</td>
-                                            <td>Other</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-
-                            </div>
-
-                        </td>
-
-                        <td>
-                            <div class="col-print-6">
-                                <table>
-                                    <tbody>
-                                        <tr>
-                                            <th>Companies Count</th>
-                                            <th>Investor Type</th>
-                                        </tr>
-                                        <tr>
-                                            <td>@Model?.ActiveVendor?.SCZCompaniesCount</td>
-                                            <td>Investor in the Suez Canal Economic Zone</td>
-                                        </tr>
-                                        <tr>
-                                            <td>@Model?.ActiveVendor?.FreeZoneCompaniesCount</td>
-                                            <td>Free zone company</td>
-
-                                        </tr>
-                                        <tr>
-                                            <td>@Model?.ActiveVendor?.InLandInvestmentCompaniesCount</td>
-                                            <td>In-Land Investment company</td>
-
-                                        </tr>
-                                        <tr>
-                                            <td>@Model?.ActiveVendor?.OtherCompaniesCount</td>
-                                            <td>Other</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
         </div>
-    </main>
+    </div>
+
+</div>
+
+
+<div class="container border" id="myBillingArea">
+    <div class="text-center">
+        <div class="caption level-caption">
+            <span class="caption-subject font-dark bold uppercase" style="text-align:center;     text-align: center; font-size: 16px;">  @Loc["Admin.Reports.etabadulActivecomapniesandproductreport"]</span>
+            <hr />
+        </div>
+    </div>
+
+
+    <div class="form-horizontal">
+        <div class="form-body">
+            <div class="main-header col-12 px-0">
+                <div class="row align-items-end">
+                    <div class="col-md-4 col-ms-12 col-12">
+                        <div class="form-group mb-0" id="timefrom">
+                            <admin-label asp-for="dateRange.StartDate" class="control-label" />
+                            <admin-input asp-for="dateRange.StartDate" />
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-ms-12 col-12" id="timeto">
+                        <div class="form-group mb-0">
+                            <admin-label asp-for="dateRange.EndDate" class="control-label" />
+                            <admin-input asp-for="dateRange.EndDate" />
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-12 col-12" id="generatereport">
+                        <div class="form-actions">
+                            <div class="btn-group">
+                                <button class="btn btn-success filter-submit" id="btnRunReport">
+                                    <i class="fa fa-search"></i> @Loc["Admin.Reports.Customers.RunReport"]
+
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="x_panel">
+                <div class="x_content">
+                    <div id="search-term-report-grid" data-role="grid" class="k-grid k-widget">
+                        <table role="grid">
+                            <colgroup>
+                                <col style="width:50px">
+                                <col>
+                            </colgroup>
+                            <thead class="k-grid-header" role="rowgroup">
+                                <tr role="row">
+                                    <th id="product-active" class="k-header"> @Model.ProductActiveCount</th>
+                                    <th class="k-header"> @Loc["admin.reports.totalnumberofactiveproducts"]</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="x_panel">
+                <div class="x_content">
+                    <div id="search-term-report-grid" data-role="grid" class="k-grid k-widget">
+                        <table role="grid">
+                            <colgroup>
+                                <col style="width:50px">
+                                <col>
+                            </colgroup>
+                            <thead class="k-grid-header" role="rowgroup">
+                                <tr role="row">
+                                    <th id="vendor-active" class="k-header"> @Model.ProductActiveCount</th>
+                                    <th class="k-header"> @Loc["admin.reports.totalnumberofactiveproducts"]</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="x_panel">
+                <div>
+                    <div class="caption level-caption">
+                        <span class="caption-subject font-dark bold uppercase"> @Loc["Admin.Reports.TotalActiveCompaniesAddProducts"] </span>
+                    </div>
+                </div>
+                <div class="x_content">
+                    <div id="search-term-report-grid" data-role="grid" class="k-grid k-widget">
+                        <table role="grid">
+                            <colgroup>
+                                <col style="width:50px">
+                                <col>
+                            </colgroup>
+                            <thead class="k-grid-header" role="rowgroup">
+                                <tr role="row">
+                                    <th class="k-header"> @Loc["Admin.Reports.CompaniesCount"]</th>
+                                    <th class="k-header"> @Loc["admin.vendors.fields.investortype"]</th>
+                                </tr>
+                            </thead>
+                            <tbody role="rowgroup">
+                                <tr role="row">
+                                    <td id="product-scz">@Model.ActiveVendorProducts.SCZCompaniesCount</td>
+                                    <td>@Loc["Admin.Reports.SCZoneCompany"]</td>
+
+                                </tr>
+                                <tr class="k-alt" data-uid="f705f8ca-459f-4218-b0fd-c073eb33ba7c" role="row">
+                                    <td id="product-free">@Model.ActiveVendorProducts.FreeZoneCompaniesCount</td>
+                                    <td>@Loc["Admin.Reports.FreeZoneCompany"]</td>
+
+                                </tr>
+                                <tr role="row">
+                                    <td id="product-inland">@Model.ActiveVendorProducts.InLandInvestmentCompaniesCount</td>
+                                    <td>@Loc["Admin.Reports.InlandCompany"]</td>
+
+                                </tr>
+                                <tr class="k-alt" role="row">
+                                    <td id="product-other">@Model.ActiveVendorProducts.OtherCompaniesCount</td>
+                                    <td>@Loc["Admin.Reports.Other"]</td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="x_panel">
+                <div class="x_title">
+                    <div class="caption level-caption">
+                        <span class="caption-subject font-dark bold uppercase"> @Loc["Admin.Reports.TotalActiveCompaniesCorspoendingToInvestorType"] </span>
+                    </div>
+                </div>
+                <div class="x_content">
+                    <div id="search-term-report-grid" data-role="grid" class="k-grid k-widget">
+                        <table role="grid">
+                            <colgroup>
+                                <col style="width:50px">
+                                <col>
+                            </colgroup>
+                            <thead class="k-grid-header" role="rowgroup">
+                                <tr role="row">
+                                    <th role="columnheader" data-field="Count" data-title="Count" class="k-header"> @Loc["Admin.Reports.CompaniesCount"]</th>
+                                    <th role="columnheader" data-field="InvestorType" data-title="InvestorType" class="k-header"> @Loc["admin.vendors.fields.investortype"]</th>
+                                </tr>
+                            </thead>
+                            <tbody role="rowgroup">
+                                <tr role="row">
+                                    <td id="vendor-scz">@Model.ActiveVendor.SCZCompaniesCount</td>
+                                    <td>@Loc["Admin.Reports.SCZoneCompany"]</td>
+
+                                </tr>
+                                <tr class="k-alt" data-uid="f705f8ca-459f-4218-b0fd-c073eb33ba7c" role="row">
+                                    <td id="vendor-free">@Model.ActiveVendor.FreeZoneCompaniesCount</td>
+                                    <td>@Loc["Admin.Reports.FreeZoneCompany"]</td>
+
+                                </tr>
+                                <tr role="row">
+                                    <td id="vendor-inland">@Model.ActiveVendor.InLandInvestmentCompaniesCount</td>
+                                    <td>@Loc["Admin.Reports.InlandCompany"]</td>
+
+                                </tr>
+                                <tr class="k-alt" role="row">
+                                    <td id="vendor-other">@Model.ActiveVendor.OtherCompaniesCount</td>
+                                    <td>@Loc["Admin.Reports.Other"]</td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+<script>
+
+    $(document).ready(function () {
+
+        $(document).ready(function () {
+            $('#btnRunReport').click(function () {
+
+
+                var data = {
+                    dateRange: {
+                        StartDate: $('#@Html.IdFor(model => model.dateRange.StartDate)').val(),
+                        EndDate: $('#@Html.IdFor(model => model.dateRange.EndDate)').val()
+                    }
+                };
+
+
+
+                addAntiForgeryToken(data);
+
+                $.ajax({
+                    cache: false,
+                    url: "@Html.Raw(Url.Action("CompaniesProductStatistical", "Reports", new { area = Constants.AreaAdmin }))",
+                    data: data,
+                    dataType: "json", //to work with json format
+                    type: "POST", //to do a post request
+                    data: bestCustomersOrderTotalAdditionalData(), // here you can pass arguments to your request if you need
+                    success: function (data) {
+                        debugger;
+                        window.location.href = data;
+                        //$('#product-active').text(data.VendorActiveCount)
+                        //$('#vendor-active').text(data.ProductActiveCount)
+                        //$('#product-scz').text(data.ActiveVendorProducts.SCZCompaniesCount)
+                        //$('#product-free').text(data.ActiveVendorProducts.FreeZoneCompaniesCount)
+                        //$('#product-inland').text(data.ActiveVendorProducts.InLandInvestmentCompaniesCount)
+                        //$('#product-other').text(data.ActiveVendorProducts.OtherCompaniesCount)
+                        //$('#vendor-scz').text(data.ActiveVendor.SCZCompaniesCount)
+                        //$('#vendor-free').text(data.ActiveVendor.FreeZoneCompaniesCount)
+                        //$('#vendor-inland').text(data.ActiveVendor.InLandInvestmentCompaniesCount)
+                        //$('#vendor-other').text(data.ActiveVendor.OtherCompaniesCount)
+                       // Print()
+
+                    },
+                    error: function (request, status, error) {
+
+
+                    },
+                    failure: function (error) {
+
+                    }
+                });
+                //grid.dataSource.read(); we already loaded the grid above using "page" function
+                return false;
+            });
+
+
+
+        });
+
+
+
+
+
+    });
+
+    
+
+    function downloadPDF(invoiceNo) {
+
+        var elementHTML = document.querySelector("#myBillingArea");
+        docPDF.html(elementHTML, {
+            callback: function (docPDF) {
+                docPDF.save(invoiceNo + '.pdf');
+            },
+            x: 15,
+            y: 15,
+            width: 170,
+            windowWidth: 650
+        });
+    }
+
+
+    function bestCustomersOrderTotalAdditionalData(e) {
+        var data = {
+            dateRange: {
+                StartDate: $('#@Html.IdFor(model => model.dateRange.StartDate)').val(),
+                EndDate: $('#@Html.IdFor(model => model.dateRange.EndDate)').val(),
+            }
+
+        };
+
+        addAntiForgeryToken(data);
+        return data;
+    }
+
+</script>
