@@ -1,12 +1,11 @@
 db.Customer.aggregate([
-   {
-     $lookup:
-       {
-         from: "Vendor",
-         localField: "VendorId",
-         foreignField: "_id",
-         as: "vendor"
-       }
+  {
+    $lookup: {
+      from: "Vendor",
+      localField: "VendorId",
+      foreignField: "_id",
+      as: "vendor"
+    }
   },
   { $unwind: "$vendor" }, // Unwind the array if VendorId references multiple vendors
   {
@@ -14,10 +13,30 @@ db.Customer.aggregate([
       "vendor.Active": true,
       "vendor.Deleted": { $ne: true },
       "vendor.CreatedOnUtc": { $gte: ISODate("2024-01-01") },
-      "Approved":true,
-       "Active": true,
-        "Groups":"654a1f38ad7dfa659116faee"
+      "Approved": true,
+      "Active": true,
+      "Groups": "654a1f38ad7dfa659116faee"
     }
   },
-  { $group: { _id: null, count: { $sum: 1 } } } // Count the documents
-])
+  {
+    $lookup: {
+      from: "Product",
+      localField: "vendor._id", // Join with VendorId from the previous stage
+      foreignField: "VendorId",
+      as: "products",
+	  "Approved": "true",
+
+    }
+  },
+  {
+    $group: {
+      _id: null,
+      vendorsWithProducts: {
+        $sum: { $cond: [{ $gt: [{ $size: "$products" }, 0] }, 1, 0] }
+      },
+      vendorsWithoutProducts: {
+        $sum: { $cond: [{ $eq: [{ $size: "$products" }, 0] }, 1, 0] }
+      }
+    }
+  }
+]);
