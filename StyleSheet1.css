@@ -1,1 +1,21 @@
-mongodb://10.100.142.136:27017/etabaduldemo
+db.Product.aggregate([
+  {
+    $lookup: {
+      from: "Vendor",
+      localField: "VendorId",
+      foreignField: "VendorId",
+      as: "Vendor"
+    }
+  },
+  {
+    $match: {
+      "Approved": true,
+      "Published": true,
+      "Vendor.Active": true,
+      "ProductClassificationId": 20
+    }
+  },
+  {
+    $count: "Approved_Product_Count"
+  }
+])
