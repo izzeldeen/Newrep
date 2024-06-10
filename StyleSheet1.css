@@ -1,10 +1,23 @@
- var query = from c in _customerRepository.Table
-                        join v in _vendorRepository.Table on
-                        c.VendorId equals v.Id
-                        where v.Active == true && c.Active && !c.Deleted && c.Email != null && c.Deleted != true && v.Deleted != true
-                        select new {c.VendorId,c.CreatedOnUtc,c.IsIndividualRegister,c.Groups };
-
-            query = query.Where(c => createdFromUtc <= c.CreatedOnUtc && createdToUtc >= c.CreatedOnUtc);
-            query = query.Where(c => c.IsIndividualRegister != true && c.Groups.Any(x => x == registerGRoupID.Id));
-            var vendorIds = query.Select(c => c.VendorId).ToList();
-            return await Task.FromResult(vendorIds);
+db.Customer.aggregate([
+   {
+     $lookup:
+       {
+         from: "Vendor",
+         localField: "VendorId",
+         foreignField: "_id",
+         as: "vendor"
+       }
+  },
+  { $unwind: "$vendor" }, // Unwind the array if VendorId references multiple vendors
+  {
+    $match: {
+      "vendor.Active": true,
+      "vendor.Deleted": { $ne: true },
+      "vendor.CreatedOnUtc": { $gte: ISODate("2024-01-01") },
+      "Approved":true,
+       "Active": true,
+        "Groups":"654a1f38ad7dfa659116faee"
+    }
+  },
+  { $group: { _id: null, count: { $sum: 1 } } } // Count the documents
+])
