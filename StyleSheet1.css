@@ -1,21 +1,10 @@
-db.Product.aggregate([
-  {
-    $lookup: {
-      from: "Vendor",
-      localField: "VendorId",
-      foreignField: "VendorId",
-      as: "Vendor"
-    }
-  },
-  {
-    $match: {
-      "Approved": true,
-      "Published": true,
-      "Vendor.Active": true,
-      "ProductClassificationId": 20
-    }
-  },
-  {
-    $count: "Approved_Product_Count"
-  }
-])
+ var query = from c in _customerRepository.Table
+                        join v in _vendorRepository.Table on
+                        c.VendorId equals v.Id
+                        where v.Active == true && c.Active && !c.Deleted && c.Email != null && c.Deleted != true && v.Deleted != true
+                        select new {c.VendorId,c.CreatedOnUtc,c.IsIndividualRegister,c.Groups };
+
+            query = query.Where(c => createdFromUtc <= c.CreatedOnUtc && createdToUtc >= c.CreatedOnUtc);
+            query = query.Where(c => c.IsIndividualRegister != true && c.Groups.Any(x => x == registerGRoupID.Id));
+            var vendorIds = query.Select(c => c.VendorId).ToList();
+            return await Task.FromResult(vendorIds);
