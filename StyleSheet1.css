@@ -1,36 +1,19 @@
- new Chart(ctx, {
-                            type: 'bar',
-                            data: chartData,
-                            options: {
-                                responsive: true,
-                                title: {
-                                    display: true,
-                                    text: "@Loc["admin.dashboard.reportindividual.titlechart"]",
-                                    fontColor: 'white'
-                                },
-                                legend: {
-                                    labels: {
-                                        fontColor: 'white'
-                                    }
-                                },
-                                tooltips: {
-                                    mode: 'index',
-                                    intersect: true
-                                }, scales: {
-                                    yAxes: [{
-                                        id: 'L',
-                                        type: 'linear',
-                                        position: 'left',
-                                        gridLines: {
-                                            color: 'rgb(255,255,255)'
-                                        },
-                                        ticks: {
-                                            min: 0,
-                                            stepSize: 1,
-                                            fontColor: 'rgb(255,255,255)'
-                                        },
-                                    }]
-                                },
-                                barPercentage: 0.5
-                            }
-                        });
+{
+  "_id": "663a05547d1e957295f1d7aD",
+  "UserFields": [],
+  "ScheduleTaskName": "Sync Statistical Counts",
+  "Type": "MC.MarketPlace.Business.System.Services.BackgroundServices.ScheduleTasks.SyncStatisticalCountsScheduledTask, MC.MarketPlace.Business.System",
+  "Enabled": false,
+  "StopOnError": false,
+  "LastStartUtc": {
+    "$date": "2024-06-12T08:46:06.487Z"
+  },
+  "LastNonSuccessEndUtc": null,
+  "LastSuccessUtc": {
+    "$date": "2024-06-12T08:46:40.480Z"
+  },
+  "LeasedByMachineName": null,
+  "LeasedUntilUtc": null,
+  "TimeInterval": 0,
+  "StoreId": null
+}
