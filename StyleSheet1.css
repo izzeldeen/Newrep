@@ -1,23 +1,36 @@
-db.Customer.aggregate([
-   {
-     $lookup:
-       {
-         from: "Vendor",
-         localField: "VendorId",
-         foreignField: "_id",
-         as: "vendor"
-       }
-  },
-  { $unwind: "$vendor" }, // Unwind the array if VendorId references multiple vendors
-  {
-    $match: {
-      "vendor.Active": true,
-      "vendor.Deleted": { $ne: true },
-      "vendor.CreatedOnUtc": { $gte: ISODate("2024-01-01") },
-      "Approved":true,
-       "Active": true,
-        "Groups":"654a1f38ad7dfa659116faee"
-    }
-  },
-  { $group: { _id: null, count: { $sum: 1 } } } // Count the documents
-])
+ new Chart(ctx, {
+                            type: 'bar',
+                            data: chartData,
+                            options: {
+                                responsive: true,
+                                title: {
+                                    display: true,
+                                    text: "@Loc["admin.dashboard.reportindividual.titlechart"]",
+                                    fontColor: 'white'
+                                },
+                                legend: {
+                                    labels: {
+                                        fontColor: 'white'
+                                    }
+                                },
+                                tooltips: {
+                                    mode: 'index',
+                                    intersect: true
+                                }, scales: {
+                                    yAxes: [{
+                                        id: 'L',
+                                        type: 'linear',
+                                        position: 'left',
+                                        gridLines: {
+                                            color: 'rgb(255,255,255)'
+                                        },
+                                        ticks: {
+                                            min: 0,
+                                            stepSize: 1,
+                                            fontColor: 'rgb(255,255,255)'
+                                        },
+                                    }]
+                                },
+                                barPercentage: 0.5
+                            }
+                        });
