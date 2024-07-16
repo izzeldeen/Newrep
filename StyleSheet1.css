@@ -1,3 +1,16 @@
-{
-  "CreatedOnUtc": { "$exists": false }, Active:true, Deleted:false
-}
+  var investorType = await _vendorAttributeService.GetVendorAttributeById("655cd5b1b16b149f987af1f4");
+            var vendors = (from c in _customerRepository.Table
+                           join v in _vendorRepository.Table on c.VendorId equals v.Id
+                           where c.Approved && c.Deleted != true
+                           select new GetDate {
+                               Email = c.Email,
+                               Name = v.Name,
+                               VisitCount = c.VisitCount,
+                               Attributes = v.Attributes
+                           }).ToList();
+
+            vendors = vendors.Select(x =>
+            {
+                x.InvestorTypeName = investorType.VendorAttributeValues.FirstOrDefault(i => i.Id ==  x.Attributes?.FirstOrDefault(i => i.Key == "655cd5b1b16b149f987af1f4")?.Value).Name;
+                return x;
+            }).ToList();
