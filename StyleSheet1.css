@@ -1,1 +1,36 @@
-{Groups:'654a1f38ad7dfa659116faee'}
+{
+      "_id": "661f81936a29767e51a27744",
+      "UserFields": [],
+      "SystemName": "Statistical Report",
+      "ResourceName": "Admin.Reports.Statistical",
+      "ControllerName": "Reports",
+      "ActionName": "StatisticalReport",
+      "Url": null,
+      "ChildNodes": [],
+      "IconClass": "fa fa-dot-circle-o",
+      "DisplayOrder": 9,
+      "OpenUrlInNewTab": false,
+      "PermissionNames": [
+        "ManageReports"
+      ],
+      "AllPermissions": true,
+      "IsActive": false
+    },
+    {
+      "_id": "661f81936a29767e51a27755",
+      "UserFields": [],
+      "SystemName": "Companies and Products Statistical Report",
+      "ResourceName": "Admin.Reports.CompaniesProductsStatistical",
+      "ControllerName": "Reports",
+      "ActionName": "CompaniesProductStatistical",
+      "Url": null,
+      "ChildNodes": [],
+      "IconClass": "fa fa-dot-circle-o",
+      "DisplayOrder": 10,
+      "OpenUrlInNewTab": false,
+      "PermissionNames": [
+        "ManageReports"
+      ],
+      "AllPermissions": true,
+      "IsActive": false
+    }
