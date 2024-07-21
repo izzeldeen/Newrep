@@ -1,1 +1,41 @@
-"ReportsEmailRecipients": "iz.kalbouneh@mindtorches.com;wibrahim@agility.com;ytumu@agility.com;kkrishna@agility.com",
+db.QueuedEmail.aggregate([
+  {
+    "$match": {
+      "Subject": "eTabadul Cooperation opportunity/ فرصة شراكة علي منصة إى تبادل"
+    }
+  },
+  {
+    "$project": {
+      "From": 1,
+      "To": 1,
+      "Subject": 1,
+      "Body": 1,
+      "groupKey": {
+        "$dateToString": {
+          "format": "%Y-%m-%d",
+          "date": {
+            "$subtract": [
+              "$CreatedOnUtc",
+              {
+                "$mod": [
+                  { "$subtract": ["$CreatedOnUtc", new Date("1970-01-01")] },
+                  1000 * 60 * 60 * 24 * 14 // Two weeks in milliseconds
+                ]
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  {
+    "$group": {
+      "_id": "$groupKey",
+      "count": { "$sum": 1 },
+      "data": { "$push": { "From": "$From", "To": "$To", "Subject": "$Subject", "Body": "$Body" } }
+    }
+  },
+  {
+    "$sort": { "_id": 1 }
+  }
+])
