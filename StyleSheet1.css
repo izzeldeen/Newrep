@@ -1,23 +1,11 @@
-
 @model DateTime?
-<input id="dateTimePicker" name="@Html.NameForModel()" value="@(Model.HasValue ? Model.Value : "")" onchange="convertDateTime()"/>
-<input id="@Html.IdForModel()"  name="@Html.NameForModel()" value="@(Model.HasValue ? Model.Value : "")" class="d-none" />
+<input id="@Html.IdForModel()" name="@Html.NameForModel()" value="@(Model.HasValue ? Model.Value : "")" />
 
 <script>
     $(document).ready(function () {
-        $("#dateTimePicker").kendoDateTimePicker({
-            culture: "@CultureInfo.CurrentCulture.Name",
-            format: "MM/dd/yyyy HH:mm",
-        });
-
-         $("#@Html.IdForModel()").kendoDateTimePicker({
+        $("#@Html.IdForModel()").kendoDateTimePicker({
             culture: "@CultureInfo.CurrentCulture.Name",
             format: "dd/MM/yyyy HH:mm",
         });
-
-        function convertDateTime(){
-
-        }
-
     });
 </script>
