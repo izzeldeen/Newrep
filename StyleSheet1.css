@@ -1,1 +1,10 @@
 18/08/2024 12:00 AM
+01/07/2024 12:00 AM
+ '01/07/2024 12:00 AM' was not recognized as a valid DateTime.
+
+ string format = "dd/MM/yyyy HH:mm tt";
+
+            if (model?.dateRange?.StartDateStr != null)
+                model.dateRange.StartDate  = DateTime.ParseExact(model.dateRange.StartDateStr, format, CultureInfo.InvariantCulture);
+            if (model?.dateRange?.EndDateStr != null)
+                model.dateRange.EndDate  = DateTime.ParseExact(model.dateRange.EndDateStr, format, CultureInfo.InvariantCulture);
