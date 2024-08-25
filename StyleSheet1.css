@@ -1,2 +1,3 @@
-New Inquiry Request on eTabadul platform (Product contact us) طلب استفسار جديد على منصة إي تبادل
-New Inquiry Request on eTabadul platform (vendor contact us) طلب استفسار جديد على منصة إي تبادل
+  <b-tab title="@Loc["Products.MatchedProducts"]"  active="@Model.ShowMatchedProducts" id="matchedProductTab" itemid="matchedProductTab">
+                                    @await Component.InvokeAsync("MatchedProducts" , new { sku = (Model.Sku != null ? Model.Sku : "N/A")  ,  productId = Model.Id })
+                                </b-tab>
