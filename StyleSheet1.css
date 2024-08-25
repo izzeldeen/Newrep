@@ -1,3 +1,4 @@
-  <b-tab title="@Loc["Products.MatchedProducts"]"  active="@Model.ShowMatchedProducts" id="matchedProductTab" itemid="matchedProductTab">
-                                    @await Component.InvokeAsync("MatchedProducts" , new { sku = (Model.Sku != null ? Model.Sku : "N/A")  ,  productId = Model.Id })
-                                </b-tab>
+{Approved:true,Active:true ,  "LastLoginDateUtc": {
+    "$gte": new Date("2024-07-01T00:00:00Z"),
+    "$lte": new Date("2024-08-01T23:59:59Z")
+  }}
