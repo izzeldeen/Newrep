@@ -1,4 +1,19 @@
-{Approved:true,Active:true ,  "LastLoginDateUtc": {
+[{
+  : {
+  "Approved": true,
+  "Active": true,
+  "LastLoginDateUtc": {
     "$gte": new Date("2024-07-01T00:00:00Z"),
     "$lte": new Date("2024-08-01T23:59:59Z")
-  }}
+  }
+}
+},
+{
+  : {
+  "from": "Vendor",
+  "localField": "VendorId",
+  "foreignField": "_id",
+  "as": "vendorInfo"
+}
+}
+]
