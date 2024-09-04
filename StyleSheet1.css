@@ -1,1 +1,4 @@
-https://agilitycom-my.sharepoint.com/:x:/g/personal/wibrahim_agility_com/ESAXN8cZU-lFuSm506oN6oUBDzY4nZjqOtOXl2Fa9qbfqg?e=qt8hFt
+NPOI.XSSF.UserModel
+ IWorkbook xlPackage = new XSSFWorkbook();
+            int minWidthInUnits = 100 * 256;
+            xlPackage.SetColumnWidth(0, minWidthInUnits);
