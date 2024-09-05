@@ -1,4 +1,3 @@
-NPOI.XSSF.UserModel
- IWorkbook xlPackage = new XSSFWorkbook();
-            int minWidthInUnits = 100 * 256;
-            xlPackage.SetColumnWidth(0, minWidthInUnits);
+اسم شركة المنتج الغير النهائي	
+
+اسم شركة المنتج النهائي
