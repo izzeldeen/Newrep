@@ -1,2 +1,2 @@
-announcement.title 	Latest deals أخر الصفقات
-Admin.Catalog.Products.Fields.ProductTypeId.NonFinishedProductNotExists At least one linked product should be registered يجب على الاقل تسجيل منتج مرتبط واحد
+
+Admin.Catalog.Products.Fields.ProductTypeId.CantLinkFInishedProductWithFinishedProduct Finished product cannot be linked to another finished product  لا يمكن ربط المنتج النهائي بمنتج نهائي آخر
