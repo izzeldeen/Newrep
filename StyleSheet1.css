@@ -1,1 +1,9 @@
-https://etabadul.microclearcloud.com/Announcement	
+from productViews in _repository.Table.Where(x=> x.OwnerId == vendorId && x.ViewType == ViewType.Product)
+                   join product in _productRepository.Table on productViews.ObjectId equals product.Id
+                   join vendor in _vendorRepository.Table on productViews.ViewerId equals vendor.Id 
+                   select new ProductViewModel {
+                       Product = product.Name,
+                       Vendor= vendor.Name,
+                       VendorId= vendor.Id,
+                       VisitCount = 
+                   };
