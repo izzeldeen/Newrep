@@ -1,18 +1,2 @@
-from productViews in _repository.Table
-                         where productViews.OwnerId == vendorId && productViews.ViewType == ViewType.Product
-                         join product in _productRepository.Table on productViews.ObjectId equals product.Id
-                         join vendor in _vendorRepository.Table on productViews.ViewerId equals vendor.Id
-                         group productViews by new
-                         {
-                             product,
-                             vendor
-                         } into g
-                         select new ProductViewModel {
-                             Id = productViews.Id,
-                             Product = g.Key.product.Name,
-                             ProductSeName =  domainUrl + "/" + g.Key.product.SeName,
-                             VendorId = g.Key.vendor.Id,
-                             Vendor = g.Key.vendor.Name,
-                             VendorSeName =  domainUrl + "/" + g.Key.vendor.SeName,
-                             VisitCount = g.Count()
-                         };
+const modal = new bootstrap.Modal(document.getElementById('messageModal'));
+            modal.show();
