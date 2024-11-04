@@ -1,1 +1,2 @@
 onclick="'AxiosCart.addproducttocart_details(`@addtowishlist/' + PopupQuickViewVueModal.AddToCart.ProductId + '/2`, `#product-details-form`);return false;'"
+PopupQuickViewVueModal.IsInWishList = !PopupQuickViewVueModal.IsInWishList
