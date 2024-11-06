@@ -1,3 +1,4 @@
-<a class="btn btn-secondary mr-1" href="https://x.com/messages/compose?text=@encodedCurrentUrl" target="_blank">
-    <img src="/theme/images/Twitter-X-Logo.png" style="height: 17px;">
+<a class="btn btn-secondary mr-1" href="https://www.facebook.com/sharer/sharer.php?u=@encodedCurrentUrl" target="_blank">
+  
+    <img  src="/theme/images/facebook.svg" alt="facebook" style="height: 17px;">
 </a>
